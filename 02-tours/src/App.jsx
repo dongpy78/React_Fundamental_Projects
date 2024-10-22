@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import Loading from "./Loading";
+import Tours from "./Tours";
 
 const url = "https://www.course-api.com/react-tours-project";
 
@@ -7,21 +9,41 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  //filter sẽ tạo ra một mảng mới chứa các phần tử thoả mãn điều kiện chỉ định.
+  // Nếu điều kiện trả về true, phần tử sẽ được giữ lại. Nếu trả về false, phần tử đó sẽ bị loại bỏ.
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   const fetchTours = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(url);
       const tours = await response.json();
-      console.log(tours);
+      setTours(tours);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchTours();
   }, []);
 
-  return <h2>Tours Starter</h2>;
+  if (isLoading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      <Tours tours={tours} removeTour={removeTour} />
+    </main>
+  );
 };
 export default App;
