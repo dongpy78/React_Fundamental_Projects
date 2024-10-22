@@ -29,6 +29,14 @@ const App = () => {
     });
   };
 
+  const randomPerson = () => {
+    let randomNumber = Math.floor(Math.random() * people.length);
+    if (randomNumber === index) {
+      randomNumber = index + 1;
+    }
+    setIndex(checkNumber(randomNumber));
+  };
+
   console.log(name);
   return (
     <main>
@@ -43,13 +51,16 @@ const App = () => {
         <p className="job">{job}</p>
         <p className="info">{text}</p>
         <div className="btn-container">
-          <button className="prev-btn" onClick={prevPerson}>
+          <button className="prev-btn" onClick={() => prevPerson()}>
             <FaChevronLeft />
           </button>
-          <button className="next-btn" onClick={nextPerson}>
+          <button className="next-btn" onClick={() => nextPerson()}>
             <FaChevronRight />
           </button>
         </div>
+        <button className="btn btn-hipster" onClick={() => randomPerson()}>
+          suprise me
+        </button>
       </article>
     </main>
   );
