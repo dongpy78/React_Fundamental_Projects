@@ -53,6 +53,7 @@ html {
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;
   --fixed-width: 600px;
+  --fluid-width: 90vw;
 
   /* box shadow*/
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -66,8 +67,8 @@ html {
 
 body {
   background: var(--backgroundColor);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   line-height: 1;
   color: var(--textColor);
@@ -222,6 +223,21 @@ ul {
   text-transform: capitalize;
 }
 /* alert */
+
+/* title */
+
+.title {
+  text-align: center;
+}
+
+.title-underline {
+  background: var(--primary-500);
+  width: 7rem;
+  height: 0.25rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+/* ============= PROJECT CSS =============== */
 @keyframes spinner {
   to {
     transform: rotate(360deg);
@@ -237,23 +253,9 @@ ul {
   border-top-color: var(--primary-500);
   animation: spinner 0.3s linear infinite;
 }
-/* title */
-
-.title {
-  text-align: center;
-}
-
-.title-underline {
-  background: var(--primary-500);
-  width: 7rem;
-  height: 0.25rem;
-  margin: 0 auto;
-  margin-top: 1rem;
-}
-/* ============= PROJECT CSS =============== */
 
 main {
-  width: 90vw;
+  width: var(--fluid-width);
   max-width: var(--max-width);
   margin: 5rem auto;
 }
@@ -265,7 +267,7 @@ main {
 }
 
 .single-tour {
-  background: var(--white);
+  background-color: var(--white);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-1);
   transition: var(--transition);
@@ -283,9 +285,10 @@ main {
   padding: 0.5rem;
   color: var(--white);
   letter-spacing: var(--letterSpacing);
-  background: var(--primary-500);
+  background-color: var(--primary-500);
   border-top-right-radius: var(--borderRadius);
 }
+
 .single-tour .img {
   height: 20rem;
   border-top-right-radius: var(--borderRadius);
@@ -302,18 +305,21 @@ main {
   font-weight: 500;
   line-height: 1.5;
 }
+
 .tour-info p {
   margin-bottom: 1.25rem;
   line-height: 1.5;
   color: var(--grey-500);
 }
+
 .info-btn,
 .delete-btn {
-  background: transparent;
+  background-color: transparent;
   border: transparent;
   text-transform: capitalize;
   cursor: pointer;
 }
+
 .info-btn {
   color: var(--primary-500);
   font-weight: 600;
@@ -323,19 +329,15 @@ main {
   border: 1px solid var(--primary-500);
   color: var(--primary-500);
 }
+
 .delete-btn:hover {
-  background: var(--primary-500);
+  background-color: var(--primary-500);
   color: var(--white);
 }
 
 @media screen and (min-width: 768px) {
   .tours {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-@media screen and (min-width: 992px) {
-  .tours {
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
   }
 }
