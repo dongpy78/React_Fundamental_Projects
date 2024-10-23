@@ -3,23 +3,29 @@ import people from "./data";
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from "react-icons/fa";
 
 const App = () => {
-  // Đặt trạng thái đối tượng đầu tiên là 0
   const [index, setIndex] = useState(0);
-  // Trong mảng dữ liệu people lấy ra đối tượng đầu tiên trong mảng
   const { name, job, image, text } = people[index];
+
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
 
   const nextPerson = () => {
     setIndex((currentIndex) => {
-      // đang ở slide 2 sẽ sang slide 3
-      const newIndex = (currentIndex + 1) % people.length;
-      return newIndex;
+      const newIndex = currentIndex + 1;
+      return checkNumber(newIndex);
     });
   };
   const prevPerson = () => {
     setIndex((currentIndex) => {
-      // Ví dụ đang ở slide số 3 thì sẽ về slide số 2
-      const newIndex = (currentIndex - 1 + people.length) % people.length;
-      return newIndex;
+      const newIndex = currentIndex - 1;
+      return checkNumber(newIndex);
     });
   };
 
@@ -28,8 +34,7 @@ const App = () => {
     if (randomNumber === index) {
       randomNumber = index + 1;
     }
-    const newIndex = randomNumber % people.length;
-    setIndex(newIndex);
+    setIndex(checkNumber(randomNumber));
   };
 
   console.log(name);
