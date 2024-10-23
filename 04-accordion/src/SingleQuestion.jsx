@@ -7,8 +7,11 @@ function SingleQuestion({ title, info }) {
     <article className="question">
       <header>
         <h5>{title}</h5>
+        <button className="question-btn" onClick={() => setShowInfo(!showInfo)}>
+          {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
+        </button>
       </header>
-      <p>{info}</p>
+      {showInfo && <p>{info}</p>}
     </article>
   );
 }
