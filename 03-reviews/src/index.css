@@ -253,7 +253,6 @@ ul {
   margin-top: 1rem;
 }
 /* ============= PROJECT CSS =============== */
-
 main {
   min-height: 100vh;
   display: grid;
@@ -263,12 +262,13 @@ main {
 .review {
   width: 90vw;
   max-width: var(--fixed-width);
-  background: var(--white);
+  background-color: var(--white);
   padding: 1.5rem 2rem;
   box-shadow: var(--shadow-1);
   transition: var(--transition);
   text-align: center;
 }
+
 .review:hover {
   box-shadow: var(--shadow-3);
 }
@@ -309,47 +309,48 @@ main {
   content: "";
   width: 100%;
   height: 100%;
-  background: var(--primary-500);
+  background-color: var(--primary-500);
   position: absolute;
   border-radius: 50%;
   top: -0.25rem;
   right: -0.5rem;
 }
+
 .author {
   margin-bottom: 0.5rem;
 }
+
 .job {
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   color: var(--primary-500);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  margin-bottom: 0.75rem;
   letter-spacing: var(--letterSpacing);
 }
 
 .info {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.7rem;
   line-height: 1.5;
   color: var(--grey-600);
 }
+
 .btn-container {
   margin-bottom: 1rem;
 }
+
 .prev-btn,
 .next-btn {
   color: var(--primary-700);
   font-size: 1.25rem;
-  background: transparent;
+  background-color: transparent;
   border-color: transparent;
   margin: 0 0.5rem;
   transition: var(--transition);
   cursor: pointer;
 }
+
 .prev-btn:hover,
 .next-btn:hover {
   color: var(--primary-500);
-}
-
-.beer {
-  font-size: 2.5rem;
 }
