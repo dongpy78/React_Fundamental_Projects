@@ -34,3 +34,7 @@ Overall, the flow of the application should look something like this:
 - Modify the state of the questions array to keep track of the currently selected question index.
 - Define a function that updates the state to reflect the selected question index.
 - Use the selected question index to render only the SingleQuestion component that corresponds to the currently selected question.
+
+#### Note
+
+Hiểu logic thì chạy tay file SingleQuestion.jsx trước
