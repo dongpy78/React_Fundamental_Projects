@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { shortList, list, longList } from "./data";
 import { FaQuoteRight } from "react-icons/fa";
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
@@ -26,6 +26,20 @@ function Carousel() {
       return result;
     });
   };
+
+  useEffect(() => {
+    // sau mỗi 2 giây, slide sẽ tự động chuyển sang người tiếp theo.
+    let sliderId = setInterval(() => {
+      nextSlide();
+    }, 2000);
+    return () => {
+      clearInterval(sliderId); // Hàm này sẽ dừng bộ đếm thời gian để ngăn không cho nó tiếp tục chạy khi không cần thiết nữa.
+    };
+  }, [currentPerson]);
+
+  // [currentPerson]: Mảng này cho biết useEffect sẽ chạy lại mỗi khi currentPerson thay đổi.
+  // Điều này có nghĩa là khi người hiện tại thay đổi, useEffect sẽ thiết lập lại bộ đếm thời gian
+  //  và bắt đầu lại từ đầu. Nếu không có mảng này, bộ đếm sẽ không biết khi nào cần dừng và sẽ chạy liên tục.
 
   return (
     <section className="slider-container">
