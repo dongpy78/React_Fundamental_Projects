@@ -17,5 +17,5 @@ function Duties({ duties }) {
     </div>
   );
 }
-
+// commit sai
 export default Duties;
