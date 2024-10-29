@@ -1,3 +1,4 @@
+x;
 import { useState } from "react";
 import data from "./data";
 
@@ -5,11 +6,11 @@ const App = () => {
   const [count, setCount] = useState(1);
   const [text, setText] = useState([]);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let amount = parseInt(count);
-    setText(data.slice(0, amount));
-  }
+    let amout = parseInt(count);
+    setText(data.slice(0, amout));
+  };
 
   return (
     <section className="section-center">
@@ -21,6 +22,7 @@ const App = () => {
           name="amount"
           id="amount"
           min="1"
+          step="1"
           max="8"
           value={count}
           onChange={(e) => setCount(e.target.value)}
