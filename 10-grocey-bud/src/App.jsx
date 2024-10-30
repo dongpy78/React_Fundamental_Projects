@@ -44,7 +44,7 @@ const App = () => {
     setItems(newItems);
     setLocalStorage(newItems);
   };
-
+  // huhu
   const editItem = (itemId) => {
     const newItems = items.map((item) => {
       if (item.id === itemId) {
