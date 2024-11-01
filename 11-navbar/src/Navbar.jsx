@@ -1,29 +1,36 @@
 import { FaBars } from "react-icons/fa";
-import { links, social } from "./data";
+import { links } from "./data";
 import logo from "./logo.svg";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Navbar() {
-  const [showLinks, setShowLinks] = useState(true);
+  const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
+
+  const toggleLinks = () => {
+    setShowLinks(!showLinks);
+  };
+
+  useEffect(() => {
+    const height = showLinks
+      ? `${linksRef.current.getBoundingClientRect().height}px`
+      : "0px";
+    linksContainerRef.current.style.height = height;
+  }, [showLinks]);
+
   return (
     <nav>
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} className="logo" alt="logo" />
-          <button
-            className="nav-toggle"
-            onClick={() => setShowLinks(!showLinks)}
-          >
+          <button className="nav-toggle" onClick={toggleLinks}>
             <FaBars />
           </button>
         </div>
 
-        <div
-          className={
-            showLinks ? "links-container show-container" : "links-container"
-          }
-        >
-          <ul className="links">
+        <div className="links-container" ref={linksContainerRef}>
+          <ul className="links" ref={linksRef}>
             {links.map((link) => {
               const { id, url, text } = link;
               return (
