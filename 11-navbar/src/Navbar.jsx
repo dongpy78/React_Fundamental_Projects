@@ -1,5 +1,5 @@
 import { FaBars } from "react-icons/fa";
-import { links } from "./data";
+import { links, social } from "./data";
 import logo from "./logo.svg";
 import { useState, useRef, useEffect } from "react";
 
@@ -41,6 +41,17 @@ function Navbar() {
             })}
           </ul>
         </div>
+        {/* social links */}
+        <ul className="social-icons">
+          {social.map((socialIcon) => {
+            const { id, url, icon } = socialIcon;
+            return (
+              <li key={id}>
+                <a href={url}>{icon}</a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
