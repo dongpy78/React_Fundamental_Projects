@@ -30,8 +30,20 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: REMOVE, payload: { id } });
   };
 
+  const increase = (id) => {
+    //! payload chứa dữ liệu bổ sung khi gửi đến actions
+    dispatch({ type: INCREASE, payload: { id } });
+  };
+
+  const decrease = (id) => {
+    //! payload chứa dữ liệu bổ sung khi gửi đến actions
+    dispatch({ type: DECREASE, payload: { id } });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, clearCart, remove }}>
+    <AppContext.Provider
+      value={{ ...state, clearCart, remove, increase, decrease }}
+    >
       {children}
     </AppContext.Provider>
   );
